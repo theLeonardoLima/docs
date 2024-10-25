@@ -2444,7 +2444,7 @@ a multiple select input for belongs to many associations::
     echo $this->Form->control('tags._ids', [
         'type' => 'select',
         'multiple' => true,
-        'options' => $tagList,
+        'options' => $tags, // $tags is the output of $this->Articles->Tags->find('list')->all() in the controller
     ]);
 
 
