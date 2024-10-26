@@ -17,6 +17,12 @@ Behavior Changes
 New Features
 ============
 
+Console
+-------
+
+- The ``cake counter_cache`` command was added. This command can be used to
+  regenerate counters for models that use ``CounterCacheBehavior``.
+
 ORM
 ---
 
