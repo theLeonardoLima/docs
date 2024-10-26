@@ -11,6 +11,8 @@ Behavior Changes
 - ``ValidationSet::add()`` will now raise errors when a rule is added with
   a name that is already defined. This change aims to prevent rules from being
   overwritten by accident.
+- ``Http\Session`` will now raise an exception when an invalid session preset is
+  used.
 
 New Features
 ============
