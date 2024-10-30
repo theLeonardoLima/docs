@@ -22,6 +22,8 @@ Console
 
 - The ``cake counter_cache`` command was added. This command can be used to
   regenerate counters for models that use ``CounterCacheBehavior``.
+- ``ConsoleIntegrationTestTrait::debugOutput()`` makes it easier to debug
+  integration tests for console commands.
 
 ORM
 ---
