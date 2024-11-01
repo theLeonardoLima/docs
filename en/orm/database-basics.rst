@@ -589,7 +589,7 @@ the type mapping. During our application bootstrap we should do the following::
 
     use Cake\Database\TypeFactory;
 
-    TypeFactory::map('json', \App\Database\Type\JsonType:class);
+    TypeFactory::map('json', \App\Database\Type\JsonType::class);
 
 We then have two ways to use our datatype in our models.
 
