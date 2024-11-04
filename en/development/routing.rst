@@ -638,7 +638,7 @@ the ``$options`` argument::
     });
 
 Note the additional route parameters will be added to all the connected routes defined
-inside the prefix block. You will need to use all the parameters in the url array to 
+inside the prefix block. You will need to use all the parameters in the url array to
 build the route later, if you don't use them you'll get a ``MissingRouteException``.
 
 Multi word prefixes are by default converted using dasherize inflection, ie ``MyPrefix``
@@ -1581,7 +1581,7 @@ requests and handle reverse routing. Route classes have a few conventions:
 
 * Route classes are expected to be found in the ``Routing\\Route`` namespace of
   your application or plugin.
-* Route classes should extend :php:class:`Cake\\Routing\\Route\\Route`.
+* Route classes should extend :php:class:`\\Cake\\Routing\\Route\\Route`.
 * Route classes should implement one or both of ``match()`` and/or ``parse()``.
 
 The ``parse()`` method is used to parse an incoming URL. It should generate an
