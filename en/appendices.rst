@@ -13,6 +13,7 @@ introduced in each version and the migration path between versions.
     appendices/5-0-upgrade-guide
     appendices/5-0-migration-guide
     appendices/5-1-migration-guide
+    appendices/phpunit10
 
 Backwards Compatibility Shimming
 ================================
