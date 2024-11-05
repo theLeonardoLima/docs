@@ -7,7 +7,7 @@ introduced in each version and the migration path between versions.
 Migration Guides
 ================
 
-:doc:`migration-guides`
+:doc:`appendices/migration-guides`
 
 Backwards Compatibility Shimming
 ================================
