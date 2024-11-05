@@ -1112,8 +1112,8 @@ The state set by these helper methods is reset in the ``tearDown()`` method.
 .. versionadded:: 5.1.0
     ``replaceRequest()`` was added.
 
-Testing Actions Protected by CsrfMiddleware or FormProtectionComponent
-----------------------------------------------------------------------
+Testing Actions Protected by CsrfProtectionMiddleware or FormProtectionComponent
+--------------------------------------------------------------------------------
 
 When testing actions protected by either ``CsrfProtectionMiddleware`` or ``FormProtectionComponent`` you
 can enable automatic token generation to ensure your tests won't fail due to
