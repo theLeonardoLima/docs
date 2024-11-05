@@ -1830,11 +1830,15 @@ Expanding on the Orders example, say we have the following tables::
 
     class CartsTable extends Table
     {
-        public function implementedEvents(): array
+        public function initialize()
         {
-            return [
-                'Model.Order.afterPlace' => 'removeFromCart'
-            ];
+            // Models don't share the same event manager instance,
+            // so we need to use the global instance to listen to
+            // events from other models
+            \Cake\Event\EventManager::instance()->on(
+                'Model.Order.afterPlace',
+                callable: [$this, 'removeFromCart']
+            );
         }
 
         public function removeFromCart(EventInterface $event): void
