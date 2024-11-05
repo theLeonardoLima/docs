@@ -987,8 +987,6 @@ controller code looks like::
 
     class ArticlesController extends AppController
     {
-        public $helpers = ['Form', 'Html'];
-
         public function index($short = null)
         {
             if ($this->request->is('post')) {
@@ -1114,10 +1112,10 @@ The state set by these helper methods is reset in the ``tearDown()`` method.
 .. versionadded:: 5.1.0
     ``replaceRequest()`` was added.
 
-Testing Actions Protected by CsrfComponent or SecurityComponent
+Testing Actions Protected by CsrfMiddleware or FormProtectionComponent
 ---------------------------------------------------------------
 
-When testing actions protected by either SecurityComponent or CsrfComponent you
+When testing actions protected by either ``CsrfProtectionMiddleware`` or ``FormProtectionComponent`` you
 can enable automatic token generation to ensure your tests won't fail due to
 token mismatches::
 
@@ -1129,7 +1127,7 @@ token mismatches::
     }
 
 It is also important to enable debug in tests that use tokens to prevent the
-SecurityComponent from thinking the debug token is being used in a non-debug
+``FormProtectionComponent`` from thinking the debug token is being used in a non-debug
 environment. When testing with other methods like ``requireSecure()`` you
 can use ``configRequest()`` to set the correct environment variables::
 
