@@ -1006,8 +1006,6 @@ correspondant. Le code du controller ressemble à ceci::
 
     class ArticlesController extends AppController
     {
-        public $helpers = ['Form', 'Html'];
-
         public function index($short = null)
         {
             if ($this->request->is('post')) {
@@ -1211,10 +1209,10 @@ l'en-tête d'autorisation directement::
 Vous pouvez utiliser la clé ``headers`` dans ``configRequest()`` pour configurer
 n'importe quelle autre en-tête HTTP dont vous auriez besoin pour cette action.
 
-Tester les Actions Protégées par CsrfComponent ou SecurityComponent
--------------------------------------------------------------------
+Tester les Actions Protégées par CsrfProtectionMiddleware ou FormProtectionComponent
+------------------------------------------------------------------------------------
 
-Quand vous testez des actions protégées par CsrfComponent ou SecurityComponent,
+Quand vous testez des actions protégées par ``CsrfProtectionMiddleware`` ou ``FormProtectionComponent``,
 vous pouvez activer la génération automatique de token pour vous assurer que vos
 tests ne vont pas échoué à cause d'un problème de  token::
 
@@ -1226,7 +1224,7 @@ tests ne vont pas échoué à cause d'un problème de  token::
     }
 
 Il est aussi important d'activer le débogage dans les tests qui utilisent des
-tokens pour éviter que le SecurityComponent ne pense que le token de débogage
+tokens pour éviter que le ``FormProtectionComponent`` ne pense que le token de débogage
 est utilisé dans un environnement non-debug. Quand vous faites des tests avec
 d'autres méthodes comme ``requireSecure()``, vous pouvez utiliser
 ``configRequest()`` pour définir les bonnes variables d'environnement::
