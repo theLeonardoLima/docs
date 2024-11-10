@@ -1334,7 +1334,7 @@ Générer des URLs
 ================
 
 .. php:staticmethod:: url($url = null, $full = false)
-.. php:staticmethod:: reverse($params, $full = fals
+.. php:staticmethod:: reverse($params, $full = false)
 
 La génération d'URL ou le routing inversé est une fonctionnalité dans CakePHP qui est utilisée
 pour vous permettre de changer votre structure d'URL sans avoir à modifier tout votre
@@ -1649,7 +1649,7 @@ inversé. Les classes de route suivent quelques conventions:
 
 * Les classes de Route doivent se trouver dans le namespace ``Routing\\Route``
   de votre application ou plugin.
-* Les classes de Route doivent étendre :php:class:`Cake\\Routing\\Route\\Route`.
+* Les classes de Route doivent étendre :php:class:`\\Cake\\Routing\\Route\\Route`.
 * Les classes de Route doivent implémenter au moins un des méthodes ``match()``
   et/ou ``parse()``.
 
