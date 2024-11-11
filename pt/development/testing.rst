@@ -800,8 +800,6 @@ controlador se parece com::
 
     class ArticlesController extends AppController
     {
-        public $helpers = ['Form', 'Html'];
-
         public function index($short = null)
         {
             if ($this->request->is('post')) {
@@ -1001,10 +999,10 @@ cabeçalho de Autorização diretamente::
 A chave de cabeçalhos em ``configRequest()`` pode ser usada para configurar
 qualquer cabeçalho HTTP adicional necessário para uma ação.
 
-Testando Ações Protegidas por CsrfComponent ou SecurityComponent
-----------------------------------------------------------------
+Testando Ações Protegidas por CsrfProtectionMiddleware ou FormProtectionComponent
+---------------------------------------------------------------------------------
 
-Ao testar ações protegidas por SecurityComponent ou CsrfComponent, você pode ativar
+Ao testar ações protegidas por ``CsrfProtectionMiddleware`` ou ``FormProtectionComponent``, você pode ativar
 a geração automática de token para garantir que seus testes não falhem devido a
 incompatibilidades de token::
 
@@ -1016,7 +1014,7 @@ incompatibilidades de token::
     }
 
 Também é importante habilitar a depuração em testes que usam tokens para impedir
-que o SecurityComponent pense que o token de depuração está sendo usado em um
+que o ``FormProtectionComponent`` pense que o token de depuração está sendo usado em um
 ambiente sem depuração. Ao testar com outros métodos como ``requireSecure()``,
 você pode usar ``configRequest()`` para definir as variáveis de ambiente corretas::
 
@@ -1178,8 +1176,8 @@ presentes num pedido regular, é necessário não só passá-los nos dados do pe
 mas também passá-los para a configuração do pedido de teste através da opção
 ``files``. Mas não é tecnicamente necessário, a menos que o seu código aceda
 aos ficheiros carregados através dos métodos
-:php:meth:`Cake\\Http\\ServerRequest::getUploadedFile()` ou
-:php:meth:`Cake\\Http\\ServerRequest::getUploadedFiles()`.
+:php:meth:`\\Cake\\Http\\ServerRequest::getUploadedFile()` ou
+:php:meth:`\\Cake\\Http\\ServerRequest::getUploadedFiles()`.
 
 Vamos assumir que os artigos têm uma imagem teaser, e uma associação
 ``Articles hasMany Attachments``, o formulário pareceria algo parecido com isto

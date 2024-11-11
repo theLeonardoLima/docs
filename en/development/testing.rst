@@ -987,8 +987,6 @@ controller code looks like::
 
     class ArticlesController extends AppController
     {
-        public $helpers = ['Form', 'Html'];
-
         public function index($short = null)
         {
             if ($this->request->is('post')) {
@@ -1114,10 +1112,10 @@ The state set by these helper methods is reset in the ``tearDown()`` method.
 .. versionadded:: 5.1.0
     ``replaceRequest()`` was added.
 
-Testing Actions Protected by CsrfComponent or SecurityComponent
----------------------------------------------------------------
+Testing Actions Protected by CsrfProtectionMiddleware or FormProtectionComponent
+--------------------------------------------------------------------------------
 
-When testing actions protected by either SecurityComponent or CsrfComponent you
+When testing actions protected by either ``CsrfProtectionMiddleware`` or ``FormProtectionComponent`` you
 can enable automatic token generation to ensure your tests won't fail due to
 token mismatches::
 
@@ -1129,7 +1127,7 @@ token mismatches::
     }
 
 It is also important to enable debug in tests that use tokens to prevent the
-SecurityComponent from thinking the debug token is being used in a non-debug
+``FormProtectionComponent`` from thinking the debug token is being used in a non-debug
 environment. When testing with other methods like ``requireSecure()`` you
 can use ``configRequest()`` to set the correct environment variables::
 
@@ -1276,8 +1274,8 @@ In order to simulate exactly how the uploaded file objects would be present on
 a regular request, you not only need to pass them in the request data, but you also
 need to pass them to the test request configuration via the ``files`` option. It's
 not technically necessary though unless your code accesses uploaded files via the
-:php:meth:`Cake\\Http\\ServerRequest::getUploadedFile()` or
-:php:meth:`Cake\\Http\\ServerRequest::getUploadedFiles()` methods.
+:php:meth:`\\Cake\\Http\\ServerRequest::getUploadedFile()` or
+:php:meth:`\\Cake\\Http\\ServerRequest::getUploadedFiles()` methods.
 
 Let's assume articles have a teaser image, and a ``Articles hasMany Attachments``
 association, the form would look like something like this accordingly, where one
@@ -1830,11 +1828,15 @@ Expanding on the Orders example, say we have the following tables::
 
     class CartsTable extends Table
     {
-        public function implementedEvents(): array
+        public function initialize()
         {
-            return [
-                'Model.Order.afterPlace' => 'removeFromCart'
-            ];
+            // Models don't share the same event manager instance,
+            // so we need to use the global instance to listen to
+            // events from other models
+            \Cake\Event\EventManager::instance()->on(
+                'Model.Order.afterPlace',
+                callable: [$this, 'removeFromCart']
+            );
         }
 
         public function removeFromCart(EventInterface $event): void
