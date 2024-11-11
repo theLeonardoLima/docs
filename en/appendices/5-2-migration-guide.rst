@@ -17,6 +17,16 @@ Behavior Changes
   class is a subclass of ``BadRequestException``, and offers the benefit of
   being filterable from logging.
 
+Deprecations
+============
+
+Console
+-------
+
+- ``Arguments::getMultipleOption()`` is deprecated. Use ``getArrayOption()``
+  instead.
+
+
 New Features
 ============
 
@@ -27,6 +37,21 @@ Console
   regenerate counters for models that use ``CounterCacheBehavior``.
 - ``ConsoleIntegrationTestTrait::debugOutput()`` makes it easier to debug
   integration tests for console commands.
+- ``ConsoleInputArgument`` now supports a ``separator`` option. This option
+  allows positional arguments to be delimited with a character sequence like
+  ``,``. CakePHP will split the positional argument into an array when arguments
+  are parsed.
+- ``Arguments::getArrayArgumentAt()``, and ``Arguments::getArrayArgument()``
+  were added. These methods allow you to read ``separator`` delimitered
+  positional arguments as arrays.
+- ``ConsoleInputOption`` now supports a ``separator`` option. This option
+  allows option values to be delimited with a character sequence like
+  ``,``. CakePHP will split the option value into an array when arguments
+  are parsed.
+- ``Arguments::getArrayArgumentAt()``, ``Arguments::getArrayArgument()``, and
+  ``Arguments::getArrayOption()``
+  were added. These methods allow you to read ``separator`` delimitered
+  positional arguments as arrays.
 
 ORM
 ---
