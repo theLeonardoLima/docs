@@ -93,13 +93,14 @@ Component Example
 ::
 
     // In src/Controller/Component/SearchComponent.php
-    class SearchComponent extends Command
+    class SearchComponent extends Component
     {
         public function __construct(
             ComponentRegistry $registry,
-            private UserService $users
+            private UserService $users,
+            array $config = []
         ) {
-            parent::__construct($registry, []);
+            parent::__construct($registry, $config);
         }
 
         public function something()
