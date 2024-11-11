@@ -93,9 +93,10 @@ Component Example
     {
         public function __construct(
             ComponentRegistry $registry,
-            private UserService $users
+            private UserService $users,
+            array $config = []
         ) {
-            parent::__construct($registry);
+            parent::__construct($registry, $config);
         }
 
         public function something()
