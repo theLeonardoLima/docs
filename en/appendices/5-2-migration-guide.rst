@@ -13,6 +13,9 @@ Behavior Changes
   overwritten by accident.
 - ``Http\Session`` will now raise an exception when an invalid session preset is
   used.
+- ``FormProtectionComponent`` now raises ``Cake\Controller\Exception\FormProtectionException``. This
+  class is a subclass of ``BadRequestException``, and offers the benefit of
+  being filterable from logging.
 
 New Features
 ============
