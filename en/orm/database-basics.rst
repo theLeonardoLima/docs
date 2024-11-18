@@ -599,14 +599,16 @@ We then have two ways to use our datatype in our models.
 
 Overwriting the reflected schema with our custom type will enable CakePHP's
 database layer to automatically convert JSON data when creating queries. In your
-Table's :ref:`getSchema() method <saving-complex-types>` add the
+Table's :ref:`initialize() method <saving-complex-types>` add the
 following::
 
     class WidgetsTable extends Table
     {
-        public function getSchema(): TableSchemaInterface
+        public function initialize(array $config): void
         {
-            return parent::getSchema()->setColumnType('widget_prefs', 'json');
+            parent::initialize($config);
+
+            return $this->getSchema()->setColumnType('widget_prefs', 'json');
         }
     }
 
