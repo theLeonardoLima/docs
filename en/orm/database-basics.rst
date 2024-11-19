@@ -476,12 +476,14 @@ Enum Type
 Maps a `BackedEnum <https://www.php.net/manual/en/language.enumerations.backed.php>`_ to a string or integer column.
 To use this type you need to specify which column is associated to which BackedEnum inside the table class::
 
-    use \Cake\Database\Type\EnumType;
-    use \App\Model\Enum\ArticleStatus;
+    use App\Model\Enum\ArticleStatus;
+    use Cake\Database\Type\EnumType;
 
     // in src/Model/Table/ArticlesTable.php
     public function initialize(array $config): void
     {
+        parent::initialize($config);
+
         $this->getSchema()->setColumnType('status', EnumType::from(ArticleStatus::class));
     }
 
@@ -608,7 +610,7 @@ following::
         {
             parent::initialize($config);
 
-            return $this->getSchema()->setColumnType('widget_prefs', 'json');
+            $this->getSchema()->setColumnType('widget_prefs', 'json');
         }
     }
 
