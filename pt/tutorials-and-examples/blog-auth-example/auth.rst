@@ -127,14 +127,12 @@ usuário. Para o propósito deste tutorial, vamos mostrar apenas o add.php:
 Autenticação (Login e Logout)
 =============================
 
-Agora estamos prontos para adicionar a nossa camada de autenticação. Em CakePHP
-isso é tratado pelo :php:class:`Cake\\Controller\\Component\\AuthComponent`, uma
-classe responsável por exigir o ``login`` para determinadas ações, a manipulação
-de ``login`` e ``logout`` de usuário, e também permite as ações para que estão
-autorizados.
+Agora estamos prontos para adicionar a nossa camada de autenticação. No CakePHP
+isso é tratado pelo seguinte comando: ``Cake\\Controller\\Component\\AuthComponent`` . 
+O AuthComponent é um Component responsável por exigir ``login`` para determinadas ações, manipulação das ferramentas ``login`` e ``logout`` de usuário, e também permite ações somente para usuários autorizados!
 
-Para adicionar este componente em sua aplicação abra o arquivos
-**src/Controller/AppController.php** e adicione as seguintes linha::
+Para adicionar este componente em sua aplicação abra o arquivo
+**src/Controller/AppController.php** e adicione as seguintes linhas::
 
     // src/Controller/AppController.php
 
@@ -170,10 +168,7 @@ Para adicionar este componente em sua aplicação abra o arquivos
         //...
     }
 
-Não há muito para ser configurado, como usamos as convenções para a tabela
-de usuários. Nós apenas configuramos as URLs que serão carregados após o
-``login`` e ``logout``, estás ações são realizadas no nosso caso para os
-``/articles/`` e ``/`` respectivamente.
+Não são necessárias muitas configurações, pois utilizamos as convenções padrão para a tabela de usuários. Ajustamos apenas as URLs de redirecionamento após as ações de ``login`` e ``logout``. Após o ``login``, o usuário será direcionado para a lista de artigos ``/articles/``, e após o logout, para a página inicial ``/``.
 
 O que fizemos na função ``beforeFilter()`` foi dizer ao ``AuthComponent`` para
 não exigir ``login`` em todos ``index()`` e ``view()``, em cada controlador.
